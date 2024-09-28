@@ -7,11 +7,11 @@ namespace Facturacion.Services
 {
     public class AuthService
     {
-        private readonly ProtectedBrowserStorage _localstorage;
+        private readonly ProtectedLocalStorage _localstorage;
         private readonly HttpClient _httpClient;
         private string? _token;
 
-        public AuthService(ProtectedBrowserStorage localstorage, HttpClient httpClient)
+        public AuthService(ProtectedLocalStorage localstorage, HttpClient httpClient)
         {
             _localstorage = localstorage;
             _httpClient = httpClient;

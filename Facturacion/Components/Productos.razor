@@ -1,0 +1,61 @@
+﻿@page "/productos"
+@using Facturacion.DTO
+@using Facturacion.Services
+
+<h3>Lista de Productos</h3>
+
+@if (productos == null)
+{
+    <p><em>Cargando...</em></p>
+}
+else
+{
+    
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var producto in productos)
+        {
+            <tr>
+                <td>@producto.Nombre</td>
+                <td>@producto.Precio</td>
+                <td>@producto.Stock</td>
+                
+            </tr>
+        }
+    </tbody>
+</table>
+}
+
+@if (string.IsNullOrEmpty(errorMessage))
+{
+    <div class="alert alert-danger">@errorMessage</div>
+}
+
+@inject ProductoService productoService
+@code {
+    private List<ProductoResponse> productos;
+    private string errorMessage;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            productos = await productoService.GetProductos();
+        }
+        catch(Exception ex)
+        {
+            errorMessage = ex.Message;
+        }
+    }
+}
