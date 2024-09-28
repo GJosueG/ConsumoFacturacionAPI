@@ -14,6 +14,7 @@ builder.Services.AddScoped(o => new HttpClient
 
 builder.Services.AddScoped<AuthService>();
 
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

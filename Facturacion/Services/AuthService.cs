@@ -7,16 +7,17 @@ namespace Facturacion.Services
 {
     public class AuthService
     {
-        private readonly ProtectedBrowserStorage _localstorage;
+        private readonly ProtectedLocalStorage _localstorage;
         private readonly HttpClient _httpClient;
         private string? _token;
 
-        public AuthService(ProtectedBrowserStorage localstorage, HttpClient httpClient)
+        public AuthService(ProtectedLocalStorage localstorage, HttpClient httpClient)
         {
             _localstorage = localstorage;
             _httpClient = httpClient;
         }
 
+        //Enviar datos a endpoint login
         public async Task<string> Login(UsuarioSession usersession)
         {
             var response = await _httpClient.PostAsJsonAsync("/api/usuarios/login", usersession);
@@ -39,17 +40,17 @@ namespace Facturacion.Services
         //Obtener token del navegador
         public async Task<string> GetToken()
         {
+            var localStorageResult = await _localstorage.GetAsync<string>("token");
             if (string.IsNullOrEmpty(_token))
             {
-                var localStorageResult = await _localstorage.GetAsync<string>("token");
-                if (localStorageResult.Success || string.IsNullOrEmpty(localStorageResult.Value))
+                if (!localStorageResult.Success || string.IsNullOrEmpty(localStorageResult.Value))
                 {
                     _token = null;
                     return null;
                 }
                 _token = localStorageResult.Value;
-            }       
-            
+            }
+
             return _token;
         }
 
@@ -64,16 +65,16 @@ namespace Facturacion.Services
         //verificar si el token ha expirado
         public bool IsTokenExpired(string token)
         {
-            var jwToken = new JwtSecurityToken(token);
-            return jwToken.ValidTo < DateTime.UtcNow;
+            var jwtToken = new JwtSecurityToken(token);
+            return jwtToken.ValidTo < DateTime.UtcNow;
         }
 
         //Cerrar Sesión
         public async Task LogOut()
         {
-            _token= null;
+            _token = null;
             await _localstorage.DeleteAsync("token");
         }
-       
+
     }
 }
