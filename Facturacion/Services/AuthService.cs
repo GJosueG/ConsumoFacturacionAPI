@@ -18,9 +18,9 @@ namespace Facturacion.Services
         }
 
         //Enviar datos a endpoint login
-        public async Task<string> Login(UsuarioSession usersession)
+        public async Task<string> Login(UsuarioSession usuariosession)
         {
-            var response = await _httpClient.PostAsJsonAsync("/api/usuarios/login", usersession);
+            var response = await _httpClient.PostAsJsonAsync("/api/usuarios/login", usuariosession);
             if (response.IsSuccessStatusCode)
             {
                 var result = await response.Content.ReadFromJsonAsync<string>();

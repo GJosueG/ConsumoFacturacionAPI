@@ -1,19 +1,19 @@
 ﻿using Facturacion.DTO;
-using System.Net.Http.Headers;
 
 namespace Facturacion.Services
 {
-    public class ProductoService
+    public class TicketService
     {
         private readonly HttpClient _httpClient;
         private readonly AuthService _authService;
 
-        public ProductoService(HttpClient httpClient, AuthService authService)
+        public TicketService(HttpClient httpClient, AuthService authService)
         {
             _httpClient = httpClient;
             _authService = authService;
         }
-        public async Task<List<ProductoResponse>> GetProductos()
+
+        public async Task<List<TicketResponse>> GetTickets() 
         {
             try
             {
@@ -25,19 +25,18 @@ namespace Facturacion.Services
                 //}
 
                 //_httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", token);
-                var response = await _httpClient.GetFromJsonAsync<List<ProductoResponse>>("api/productos");
+                var response = await _httpClient.GetFromJsonAsync<List<TicketResponse>>("api/tickets");
 
                 return response;
             }
             catch (HttpRequestException ex)
             {
-                throw new Exception("Error al obtener productos. Revisar conexión a internet");
+                throw new Exception("Error el obtener tickets. Revisar conexión a internet");
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
-                throw new Exception("Ha ocurrido un error inesperado al obtener productos");
+                throw new Exception("Ha ocurrido un error inesperado al obtener tickets");
             }
-
         }
     }
 }

@@ -20,4 +20,10 @@
 
         //public virtual Estado? Estado { get; set; }
     }
+
+    public class EstadoResponse
+    {
+        public int EstadoId { get; set; }
+        public string Nombre { get; set; } = null!;
+    }
 }
