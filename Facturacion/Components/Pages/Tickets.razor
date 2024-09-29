@@ -1,0 +1,50 @@
+﻿@page "/tickets"
+@using Facturacion.DTO
+@using Facturacion.Services
+
+<h3>Tickets</h3>
+@if (tickets == null)
+{
+    <p><em>Cargando...</em></p>
+} 
+else 
+{
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Descripción</th>
+            <th>Cantidad</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ticket in tickets)
+        {
+            <tr>
+                <td>@ticket.Descripcion</td>
+                <td>@ticket.Cantidad</td>
+                <td>@ticket.Total</td>
+            </tr>
+        }
+    </tbody>
+</table>
+}
+
+@inject TicketService ticketService
+@code {
+    private List<TicketResponse> tickets;
+    private string errorMessage;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            tickets = await ticketService.GetTickets();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = ex.Message;
+        }
+    }
+}

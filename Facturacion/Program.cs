@@ -1,4 +1,5 @@
 using Facturacion.Components;
+using Facturacion.DTO;
 using Facturacion.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +15,7 @@ builder.Services.AddScoped(o => new HttpClient
 
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<ProductoService>();
+builder.Services.AddScoped<TicketService>();
 
 
 var app = builder.Build();
