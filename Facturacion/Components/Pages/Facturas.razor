@@ -1,0 +1,49 @@
+﻿@page "/facturas"
+@using Facturacion.DTO
+@using Facturacion.Services
+
+<h3>Lista de Facturas</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+         
+            <th>Descripcion</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+            <th>Impuesto</th>
+            <th>Fecha Emision</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var factura in facturas)
+        {
+            <tr>
+                <td>@factura.Descripcion</td>
+                <td>@factura.Cantidad</td>
+                <td>@factura.Precio</td>
+                <td>@factura.Impuesto</td>
+                <td>@factura.FechaEmision</td>
+            </tr>
+        }
+    </tbody>
+    </table>
+
+@inject FacturaService facturaService
+@code {
+    private List<FacturaResponse> facturas;
+    private string errorMessage;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            facturas = await facturaService.GetFacturas();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = ex.Message;
+        }
+        
+    }
+}
