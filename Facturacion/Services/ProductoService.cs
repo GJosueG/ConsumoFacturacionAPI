@@ -31,7 +31,7 @@ namespace Facturacion.Services
             }
             catch (HttpRequestException ex)
             {
-                throw new Exception("Error el obtener productos. Revisar conexión a internet");
+                throw new Exception("Error al obtener productos. Revisar conexión a internet");
             }
             catch (Exception ex) 
             {
