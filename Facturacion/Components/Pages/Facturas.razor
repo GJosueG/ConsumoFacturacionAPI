@@ -4,6 +4,13 @@
 
 <h3>Lista de Facturas</h3>
 
+@if (facturas == null)
+{
+    <p><em>Cargando...</em></p>
+}
+else
+{
+
 <table class="table">
     <thead>
         <tr>
@@ -28,6 +35,7 @@
         }
     </tbody>
     </table>
+}
 
 @inject FacturaService facturaService
 @code {

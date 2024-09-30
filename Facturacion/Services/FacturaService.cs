@@ -18,14 +18,14 @@ namespace Facturacion.Services
         {
             try
             {
-               var token = await _authService.GetToken();
+               //var token = await _authService.GetToken();
 
-                if (string.IsNullOrWhiteSpace(token))
-                {
-                    throw new InvalidOperationException("El token es nulo o invalido. Iniciar sesión");
-                }
+               // if (string.IsNullOrWhiteSpace(token))
+               // {
+               //     throw new InvalidOperationException("El token es nulo o invalido. Iniciar sesión");
+               // }
 
-                _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", token);
+               // _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", token);
                 var response = await _httpClient.GetFromJsonAsync<List<FacturaResponse>>("api/facturas");
 
                 return response;
