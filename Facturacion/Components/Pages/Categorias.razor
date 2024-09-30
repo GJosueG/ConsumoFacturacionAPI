@@ -14,15 +14,16 @@ else
     <table class="table">
         <thead>
             <tr>
+                <th>#</th> <!-- Nueva columna para enumeración -->
                 <th>Nombre</th>
-               
             </tr>
         </thead>
         <tbody>
-            @foreach (var categoria in categorias)
+            @foreach (var categoria in categorias.Select((value, index) => new { value, index }))
             {
                 <tr>
-                    <td>@categoria.Nombre</td>
+                    <td>@(categoria.index + 1)</td> <!-- Enumerar desde 1 -->
+                    <td>@categoria.value.Nombre</td>
                 </tr>
             }
         </tbody>

@@ -11,36 +11,32 @@
 }
 else
 {
-    
 
 
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Nombre</th>
-            <th>Precio</th>
-            <th>Stock</th>
-            
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var producto in productos)
-        {
+
+    <table class="table">
+        <thead>
             <tr>
-                <td>@producto.Nombre</td>
-                <td>@producto.Precio</td>
-                <td>@producto.Stock</td>
-                
-            </tr>
-        }
-    </tbody>
-</table>
-}
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Stock</th>
 
-@if (string.IsNullOrEmpty(errorMessage))
-{
-    <div class="alert alert-danger">@errorMessage</div>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var producto in productos.Select((value, index) => new { value, index }))
+            {
+                <tr>
+                    <td>@(producto.index + 1)</td> <!-- Enumerar desde 1 -->
+                    <td>@producto.value.Nombre</td>
+                    <td>@producto.value.Precio</td>
+                    <td>@producto.value.Stock</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 }
 
 @inject ProductoService productoService
@@ -54,7 +50,7 @@ else
         {
             productos = await productoService.GetProductos();
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             errorMessage = ex.Message;
         }
