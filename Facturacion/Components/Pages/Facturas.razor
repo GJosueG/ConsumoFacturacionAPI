@@ -2,6 +2,8 @@
 @using Facturacion.DTO
 @using Facturacion.Services
 
+<link rel="stylesheet" href="css/styles.css" />
+
 <h3>Lista de Facturas</h3>
 
 @if (facturas == null)
@@ -11,13 +13,47 @@
 else
 {
 
-<table class="table">
+    <div class="invoice-container">
+        @foreach (var factura in facturas)
+        {
+        <h1></h1>
+        <div class="invoice-header">
+            <p><strong>Fecha de Emisión:</strong>@factura.FechaEmision</p>
+            <p><strong>Factura N°:</strong>#@factura.FacturaId</p>
+            <p><strong>Cliente:</strong></p>
+        </div>
+
+        <table class="invoice-table">
+            <thead>
+                <tr>
+                    <th>Descripción</th>
+                    <th>Cantidad</th>
+                    <th>Impuesto</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                    <tr>
+                        <td>@factura.Descripcion</td>
+                        <td>@factura.Cantidad</td>
+                        <td>@factura.Impuesto %</td>
+                        <td>$@(factura.Cantidad * (1 + factura.Impuesto / 100))</td> <!-- Subtotal calculado -->
+                    </tr>
+                
+            </tbody>
+        </table>
+        }
+
+        
+    </div>
+
+@* <table class="table">
     <thead>
         <tr>
          
             <th>Descripcion</th>
             <th>Cantidad</th>
-            <th>Precio</th>
             <th>Impuesto</th>
             <th>Fecha Emision</th>
         </tr>
@@ -28,13 +64,12 @@ else
             <tr>
                 <td>@factura.Descripcion</td>
                 <td>@factura.Cantidad</td>
-                <td>@factura.Precio</td>
                 <td>@factura.Impuesto</td>
                 <td>@factura.FechaEmision</td>
             </tr>
         }
     </tbody>
-    </table>
+    </table> *@
 }
 
 @inject FacturaService facturaService

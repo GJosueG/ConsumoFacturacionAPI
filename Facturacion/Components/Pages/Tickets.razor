@@ -3,32 +3,41 @@
 @using Facturacion.Services
 
 <h3>Tickets</h3>
+<link rel="stylesheet" href="css/styles.css" />
 @if (tickets == null)
 {
     <p><em>Cargando...</em></p>
 } 
 else 
 {
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>Descripción</th>
-            <th>Cantidad</th>
-            <th>Total</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var ticket in tickets)
-        {
-            <tr>
-                <td>@ticket.Descripcion</td>
-                <td>@ticket.Cantidad</td>
-                <td>@ticket.Total</td>
-            </tr>
-        }
-    </tbody>
-</table>
+    @foreach (var ticket in tickets)
+    {
+    <div class="ticket-container">
+        <h2 class="ticket-title">Ticket de Compra</h2>
+        <table class="ticket-table">
+            <thead>
+                <tr>
+                    <th>Descripción</th>
+                    <th>Cantidad</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                    <tr>
+                        <td>@ticket.Descripcion</td>
+                        <td>@ticket.Cantidad</td>
+                        <td>@ticket.Total</td>
+                    </tr>
+               
+            </tbody>
+        </table>
+        <div class="ticket-footer">
+            <p>Gracias por su compra!</p>
+            <p>Fecha: @DateTime.Now.ToString("dd/MM/yyyy")</p>
+        </div>
+    </div>
+    }
 }
 
 @inject TicketService ticketService

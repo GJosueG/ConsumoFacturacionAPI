@@ -1,0 +1,178 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+.invoice-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.invoice-header {
+    margin-bottom: 20px;
+}
+
+    .invoice-header p {
+        margin: 5px 0;
+    }
+
+.invoice-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+    .invoice-table th, .invoice-table td {
+        padding: 10px;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+
+    .invoice-table th {
+        background-color: #f2f2f2;
+        color: #333;
+    }
+
+    .invoice-table tbody tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+.invoice-summary {
+    text-align: right;
+    margin-top: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+    .invoice-summary p {
+        margin: 0;
+    }
+
+
+
+/*MainLayout*/
+body {
+    font-family: Arial, sans-serif; /* Fuente simple */
+    margin: 0; /* Sin margen */
+    padding: 0; /* Sin espaciado */
+    background-color: #f0f4f8; /* Color de fondo pastel */
+}
+
+.page {
+    display: flex; /* Flexbox para layout */
+}
+
+.sidebar {
+    width: 200px; /* Ancho de la barra lateral */
+    background-color: #e7f0ff; /* Fondo azul pastel */
+    padding: 15px; /* Espaciado interno */
+    border-right: 1px solid #cfd8e1; /* Borde derecho */
+}
+
+.top-row {
+    background-color: #ffffff; /* Fondo blanco */
+    padding: 10px 15px; /* Espaciado interno */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+.about-link {
+    color: #6c757d; /* Color de enlace suave */
+    text-decoration: none; /* Sin subrayado */
+}
+
+    .about-link:hover {
+        text-decoration: underline; /* Subrayado al pasar el mouse */
+    }
+
+.content {
+    flex: 1; /* Ocupa el espacio restante */
+    padding: 20px; /* Espaciado interno */
+    background-color: #ffffff; /* Fondo blanco */
+}
+
+.footer {
+    background-color: #e7f0ff; /* Fondo azul pastel */
+    text-align: center; /* Centrar el texto */
+    padding: 15px; /* Espaciado interno */
+    margin-top: auto; /* Asegura que el pie de página esté al final */
+}
+
+    .footer a {
+        color: #007bff; /* Color del enlace */
+        text-decoration: none; /* Sin subrayado */
+    }
+
+        .footer a:hover {
+            text-decoration: underline; /* Subrayar al pasar el mouse */
+        }
+
+#blazor-error-ui {
+    background-color: #ffe5e5; /* Fondo de error suave */
+    color: #721c24; /* Color del texto de error */
+    padding: 10px; /* Espaciado interno */
+    border: 1px solid #f5c6cb; /* Borde de error */
+    border-radius: 5px; /* Esquinas redondeadas */
+    margin-top: 20px; /* Espacio superior */
+    text-align: center; /* Centrar el texto de error */
+}
+
+
+
+        
+/*
+        //ticket */
+
+
+.ticket-container {
+    max-width: 400px; /* Ancho máximo del ticket */
+    margin: 20px auto; /* Centrar el ticket en la página */
+    padding: 20px;
+    border: 1px solid #ddd; /* Borde ligero */
+    border-radius: 10px; /* Esquinas redondeadas */
+    background-color: #fff; /* Fondo blanco */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.ticket-title {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #333; /* Color del texto */
+    margin-bottom: 15px;
+}
+
+.ticket-table {
+    width: 100%; /* Ancho completo */
+    border-collapse: collapse; /* Colapsar bordes */
+}
+
+.ticket-table th, .ticket-table td {
+    padding: 10px; /* Espaciado interno */
+    text-align: left; /* Alinear texto a la izquierda */
+}
+
+.ticket-table th {
+    background-color: #f7f7f7; /* Color de fondo de encabezados */
+    border-bottom: 2px solid #ddd; /* Línea inferior */
+}
+
+.ticket-table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Color de fondo para filas pares */
+}
+
+.ticket-footer {
+    margin-top: 20px; /* Espacio superior */
+    text-align: center; /* Centrar texto */
+    font-size: 0.9rem; /* Tamaño de fuente más pequeño */
+    color: #666; /* Color de texto más suave */
+}
